@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
+import { DashboardSharedService } from '../../../../services/dashboard-shared.service';
 
 
 @Component({
@@ -13,19 +14,32 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
 
   private alive = true;
 
-  @Input() value: number;
-
+  @Input() incomePercentage: number;
+  @Input() totalExpenses: number;
+  @Input() expensesPercentage: number;
+  currencyCode: string;
   option: any = {};
   chartLegend: { iconColor: string; title: string }[];
   echartsIntance: any;
 
-  constructor(private theme: NbThemeService,
-              private layoutService: LayoutService) {
+  constructor(
+    private theme: NbThemeService,
+    private layoutService: LayoutService,
+    private sharedDashboardDataService: DashboardSharedService) {
     this.layoutService.onSafeChangeLayoutSize()
       .pipe(
         takeWhile(() => this.alive),
       )
       .subscribe(() => this.resizeChart());
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.sharedDashboardDataService.getTenantCurrencyCode()
+      .subscribe(code => {
+        this.currencyCode = code;
+      });
   }
 
   ngAfterViewInit() {
@@ -47,11 +61,11 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
     this.chartLegend = [
       {
         iconColor: visitorsPieLegend.firstSection,
-        title: 'New Visitors',
+        title: 'Expenses',
       },
       {
         iconColor: visitorsPieLegend.secondSection,
-        title: 'Return Visitors',
+        title: 'Income',
       },
     ];
   }
@@ -74,7 +88,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
           radius: visitorsPie.firstPieRadius,
           data: [
             {
-              value: this.value,
+              value: this.incomePercentage,
               name: ' ',
               label: {
                 normal: {
@@ -112,7 +126,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
               hoverAnimation: false,
             },
             {
-              value: 100 - this.value,
+              value: 100 - this.incomePercentage,
               name: ' ',
               tooltip: {
                 show: false,
@@ -139,7 +153,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
           radius: visitorsPie.secondPieRadius,
           data: [
             {
-              value: this.value,
+              value: this.incomePercentage,
               name: ' ',
               label: {
                 normal: {
@@ -164,7 +178,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
               hoverAnimation: false,
             },
             {
-              value: 100 - this.value,
+              value: 100 - this.incomePercentage,
               name: ' ',
               tooltip: {
                 show: false,
