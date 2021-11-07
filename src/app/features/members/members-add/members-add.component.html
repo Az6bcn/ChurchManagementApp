@@ -1,1 +1,99 @@
-<p>members-add works!</p>
+<nb-card>
+  <nb-card-header>Add Mmeber</nb-card-header>
+  <nb-card-body>
+    <form
+      [formGroup]='memberFG'
+      class="row"
+    >
+      <div class="col-lg-6">
+        <mat-form-field
+          class="input-example"
+          appearance="fill"
+        >
+          <mat-label>Name</mat-label>
+          <input
+            formControlName='name'
+            matInput
+            autocomplete="off"
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          class="input-example"
+          appearance="fill"
+        >
+          <mat-label>Surname</mat-label>
+          <input
+            formControlName='surname'
+            matInput
+            autocomplete="off"
+          >
+        </mat-form-field>
+
+        <mat-form-field class="input-example">
+          <mat-label>Datepicker</mat-label>
+          <input
+            formControlName='dateAndMonthOfBirth'
+            matInput
+            autocomplete="off"
+            [matDatepicker]="picker"
+          >
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field
+          class="input-example"
+          appearance="fill"
+        >
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName='gender'>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          class="input-example"
+          appearance="fill"
+        >
+          <mat-label>Contact Number</mat-label>
+          <span matPrefix>+44 &nbsp;</span>
+          <input
+            formControlName='phoneNumber'
+            matInput
+            autocomplete="off"
+          >
+        </mat-form-field>
+
+        <div>
+          <p>
+            <mat-checkbox
+              formControlName='isWorker'
+              class="example-margin"
+              [value]="false"
+            >IsWorker</mat-checkbox>
+          </p>
+        </div>
+      </div>
+    </form>
+    <div class="btns">
+      <button
+        class="btns_margin_each"
+        mat-raised-button
+        color="warn"
+      >Cancel</button>
+
+      <button
+        class="btns_margin_each"
+        mat-raised-button
+        color="primary"
+      >Save</button>
+    </div>
+  </nb-card-body>
+</nb-card>
+

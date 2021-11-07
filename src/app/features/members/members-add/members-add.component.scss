@@ -1,0 +1,31 @@
+
+:host {
+  display: block;
+}
+
+.input-example {
+  display: block;
+  margin-top: 1rem;
+
+  label, mat-radio-button {
+    margin-right: 1rem;
+  }
+
+  textarea {
+    min-height: 3rem;
+  }
+}
+.example-section {
+  margin: 12px 0;
+}
+
+.btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns_margin_each{
+  margin: 2em;
+}
