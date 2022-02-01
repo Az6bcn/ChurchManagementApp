@@ -33,12 +33,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Congregation',
-        link: '/pages/layout/list',
+        link: '/features/members/congregation',
         icon: 'list-outline'
       },
       {
         title: 'Workers',
-        link: '/pages/layout/list',
+        link: '/features/members/workers',
         icon: 'list-outline'
       }
     ]

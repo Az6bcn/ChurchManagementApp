@@ -1,3 +1,4 @@
+import { MembersListComponent } from './members/members-list/members-list.component';
 import { MembersAddComponent } from './members/members-add/members-add.component';
 import { MembersComponent } from './members/members.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,9 @@ const routes: Routes = [
         path: 'members',
         component: MembersComponent,
         children: [
-          { path: 'add', component: MembersAddComponent }
+          { path: 'add', component: MembersAddComponent },
+          { path: 'congregation', component: MembersListComponent },
+          { path: 'workers', component: MembersListComponent }
         ]
       }
     ]

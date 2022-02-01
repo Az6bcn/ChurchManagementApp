@@ -5,10 +5,11 @@
 @include nb-install-component() {
   position: relative;
   display: block;
-  overflow: hidden;
+  //overflow: hidden;
 
   nb-card {
     position: relative;
+    overflow: hidden;
   }
 
   nb-card-header {

@@ -16,6 +16,9 @@
             matInput
             autocomplete="off"
           >
+          <mat-error *ngIf="name?.touched && name?.invalid && name?.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field
@@ -28,10 +31,15 @@
             matInput
             autocomplete="off"
           >
+          <mat-error
+            *ngIf="surname?.touched && surname.invalid &&surname?.hasError('required')"
+          >
+            Surname is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="input-example">
-          <mat-label>Datepicker</mat-label>
+          <mat-label>Month Year picker</mat-label>
           <input
             formControlName='dateAndMonthOfBirth'
             matInput
@@ -43,6 +51,11 @@
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="dateMonthOfBirth?.touched && dateMonthOfBirth?.invalid && dateMonthOfBirth?.hasError('required')"
+          >
+            Month and year of birth is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-lg-6">
@@ -55,6 +68,11 @@
             <mat-option value="Male">Male</mat-option>
             <mat-option value="Female">Female</mat-option>
           </mat-select>
+          <mat-error
+            *ngIf="gender?.touched && gender?.invalid && gender?.hasError('required')"
+          >
+            Gender is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field
@@ -62,12 +80,24 @@
           appearance="fill"
         >
           <mat-label>Contact Number</mat-label>
-          <span matPrefix>+44 &nbsp;</span>
+          <!-- <span matPrefix>+44 &nbsp;</span> -->
           <input
             formControlName='phoneNumber'
             matInput
             autocomplete="off"
+            placeholder="+447700000000"
           >
+          <mat-error
+            *ngIf="phoneNumber?.touched && phoneNumber?.invalid && phoneNumber?.hasError('pattern')"
+          >
+            Please entr a valid mobile phone UK number with <strong>country code
+              (+44)</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="phoneNumber?.touched && phoneNumber?.invalid && phoneNumber?.hasError('required')"
+          >
+            Mobile phone contact number <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <div>
@@ -75,7 +105,6 @@
             <mat-checkbox
               formControlName='isWorker'
               class="example-margin"
-              [value]="false"
             >IsWorker</mat-checkbox>
           </p>
         </div>
@@ -86,14 +115,14 @@
         class="btns_margin_each"
         mat-raised-button
         color="warn"
+        (click)="cancel()"
       >Cancel</button>
 
       <button
-        class="btns_margin_each"
+        class="btns_margin_each btn-save"
         mat-raised-button
-        color="primary"
+        (click)="save(memberFG.value)"
       >Save</button>
     </div>
   </nb-card-body>
 </nb-card>
-
