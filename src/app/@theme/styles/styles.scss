@@ -12,11 +12,14 @@
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/grid';
 
+@import './material/angular-material';
+
 // loading progress bar theme
 @import './pace.theme';
 
 @import './layout';
 @import './overrides';
+@import './material/material-overrides';
 
 // install the framework and custom global styles
 @include nb-install() {
@@ -30,4 +33,8 @@
   @include ngx-pace-theme();
 
   @include nb-overrides();
+  @include material-overrides();
 };
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

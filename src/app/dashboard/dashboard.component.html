@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-xxl-5">
+    <div class="row">
+      <div
+        class="col-md-6"
+        *ngIf="dashboardData != null"
+      >
+        <!-- <ngx-profit-card></ngx-profit-card> -->
+        <ngx-progress-section
+          [progressInfoData]='offeringThanksgivingTitheProgressInfo'
+        ></ngx-progress-section>
+        <nb-card *ngIf="dashboardData != null">
+          <nb-card-body>
+            <div class="subtitle">Congregation</div>
+            <div class="h3">{{ dashboardData.members| ngxNumberWithCommas }}
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+      </div>
+      <div
+        class="col-md-6"
+        *ngIf="dashboardData != null"
+      >
+        <!-- <ngx-earning-card></ngx-earning-card> -->
+        <ngx-progress-section
+          [progressInfoData]='expensesSpecialThanksgivingMidweekOfferingProgreeInfo'
+        ></ngx-progress-section>
+        <nb-card *ngIf="dashboardData != null">
+          <nb-card-body>
+            <div class="subtitle">New Comers</div>
+            <div class="h3">{{ dashboardData.newComers| ngxNumberWithCommas }}
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+    <!-- <ngx-traffic-reveal-card></ngx-traffic-reveal-card> -->
+  </div>
+
+  <div
+    class="col-xxl-7"
+    *ngIf="dashboardData != null"
+  >
+    <ngx-ecommerce-charts></ngx-ecommerce-charts>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-xxl-9">
+    <ngx-country-orders></ngx-country-orders>
+  </div>
+
+  <div class="col-xxl-3">
+    <ngx-progress-section></ngx-progress-section>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-xxl-12">
+    <ngx-ecommerce-visitors-analytics
+      *ngIf='financialAnalyticsData != null'
+      [financialAnalyticsData]='financialAnalyticsData'
+      [incomePercentage]='dashboardData.financialBreakdownInPercentage.incomePercentage'
+      [totalExpenses]='dashboardData.financialBreakdownInPercentage.expenses'
+      [expensesPercentage]='dashboardData.financialBreakdownInPercentage.expensesPercentage'
+    ></ngx-ecommerce-visitors-analytics>
+  </div>
+  <!--
+  <div class="col-xxl-3">
+    <ngx-user-activity></ngx-user-activity>
+  </div> -->
+</div>

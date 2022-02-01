@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
 import { OutlineData } from '../../../../@core/data/visitors-analytics';
+import { FinancialAnalyticsChart } from '../../../../models/financial-analytics-chart';
 
 @Component({
   selector: 'ngx-visitors-analytics-chart',
@@ -22,7 +23,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
 
   @Input() chartData: {
     innerLine: number[];
-    outerLine: OutlineData[];
+    outerLine: FinancialAnalyticsChart[];
   };
 
   option: any;
@@ -46,7 +47,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
       )
       .subscribe(config => {
         const eTheme: any = config.variables.visitors;
-
+        console.log(eTheme);
         this.setOptions(eTheme);
     });
   }
@@ -92,7 +93,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         },
         axisLabel: {
           color: eTheme.axisTextColor,
-          fontSize: eTheme.axisFontSize,
+          fontSize: 12//eTheme.axisFontSize,
         },
         axisLine: {
           lineStyle: {
@@ -112,11 +113,12 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         },
         axisLabel: {
           color: eTheme.axisTextColor,
-          fontSize: eTheme.axisFontSize,
+          fontSize: '10'//eTheme.axisFontSize,
         },
         axisTick: {
           show: false,
         },
+        scale: true,
         splitLine: {
 
           lineStyle: {
@@ -215,7 +217,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
           opacity: 1,
         },
       },
-      data: this.chartData.innerLine,
+      data: this.chartData.innerLine.map(i => i),
     };
   }
 

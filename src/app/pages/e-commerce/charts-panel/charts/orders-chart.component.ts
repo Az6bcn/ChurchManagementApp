@@ -98,6 +98,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         axisLabel: {
           color: eTheme.axisTextColor,
           fontSize: eTheme.axisFontSize,
+          
         },
         axisLine: {
           lineStyle: {
