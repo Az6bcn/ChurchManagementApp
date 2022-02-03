@@ -121,6 +121,7 @@
       <button
         class="btns_margin_each btn-save"
         mat-raised-button
+        [disabled]="isValid(memberFG)"
         (click)="save(memberFG.value)"
       >Save</button>
     </div>

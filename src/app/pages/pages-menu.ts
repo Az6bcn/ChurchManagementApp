@@ -70,12 +70,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Add',
-        link: '/pages/layout/stepper',
+        link: '/features/departments/add',
         icon: 'plus-outline'
       },
       {
         title: 'Overview',
-        link: '/pages/layout/list',
+        link: '/features/departments/overview',
         icon: 'bar-chart-outline'
       }
     ]

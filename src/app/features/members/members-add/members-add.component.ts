@@ -60,6 +60,8 @@ export class MembersAddComponent extends ToastComponent implements OnInit {
     this.memberFG.reset();
   }
 
+  isValid = (memberFG: FormGroup) => memberFG.invalid;
+
   private buildForm(fb: FormBuilder): FormGroup {
     return fb.group({
       'name': ['', [Validators.required]],

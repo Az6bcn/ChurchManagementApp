@@ -1,3 +1,4 @@
+import { DepartmentsComponent } from './departments/departments.component';
 import { MembersListComponent } from './members/members-list/members-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { DepartmentsAddComponent } from './departments/departments-add/departments-add.component';
 
 
 
@@ -50,7 +52,9 @@ const materialModules = [
   declarations: [
     MembersComponent,
     MembersAddComponent,
-    MembersListComponent
+    MembersListComponent,
+    DepartmentsComponent,
+    DepartmentsAddComponent
   ],
   imports: [
     CommonModule,

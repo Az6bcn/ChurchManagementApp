@@ -4,6 +4,8 @@ import { MembersComponent } from './members/members.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from '../pages/pages.component';
+import { DepartmentsAddComponent } from './departments/departments-add/departments-add.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
           { path: 'add', component: MembersAddComponent },
           { path: 'congregation', component: MembersListComponent },
           { path: 'workers', component: MembersListComponent }
+        ]
+      },
+      {
+        path: 'departments',
+        component: DepartmentsComponent,
+        children: [
+          { path: 'add', component: DepartmentsAddComponent },
+          { path: 'overview', component: MembersListComponent }
         ]
       }
     ]
