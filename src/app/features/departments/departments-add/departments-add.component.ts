@@ -21,8 +21,16 @@ export class DepartmentsAddComponent implements OnInit {
     this.departmentFG = this.buildForm(this._formBuilder);
   }
 
-  save(data: DepartmentRequestDto) {
-
+  save(data: DepartmentRequestDto): void {
+    console.log('depart', data);
+    this._departmentService.addDepartment(data)
+      .subscribe(res => {
+        this._toastService.success('Department added successfully', 'Add Department');
+        this.departmentFG.reset();
+      },
+        error => {
+          this._toastService.danger(error, 'Add Department');
+        })
   }
 
   cancel(): void {
